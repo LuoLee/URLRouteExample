@@ -1,0 +1,13 @@
+PODS:
+  - DeepLinkKit (1.1.0)
+  - Masonry (0.6.3)
+
+DEPENDENCIES:
+  - DeepLinkKit
+  - Masonry
+
+SPEC CHECKSUMS:
+  DeepLinkKit: 3979713c8a0b6bd3259fb7917e572acf56645a35
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+
+COCOAPODS: 0.39.0
