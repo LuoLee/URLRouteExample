@@ -28,7 +28,6 @@
 {
     [super viewDidAppear:animated];
     self.stayTime = [NSDate date];
-    self.navigationController pushViewController:animated:
 }
 
 - (void)viewWillDisappear:(BOOL)animated
