@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UREFirstViewController : UIViewController
-@property (copy, nonatomic)             NSString            *hashID;
 @property (strong, nonatomic)           UIButton            *skipButton;
 @property (strong, nonatomic)           UILabel             *descLabel;
+@property (copy, nonatomic)             NSString            *memAddress;
 
 @end

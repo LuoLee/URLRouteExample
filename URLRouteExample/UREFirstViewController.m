@@ -8,9 +8,9 @@
 
 #import "UREFirstViewController.h"
 #import <Masonry.h>
+#import "UREProtocolHeader.h"
 
 @interface UREFirstViewController ()
-@property (strong, nonatomic)               NSDate              *stayTime;
 
 @end
 
@@ -27,17 +27,19 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.stayTime = [NSDate date];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.stayTime timeIntervalSinceNow];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"timer"
-                                                        object:nil
-                                                      userInfo:@{@"stayTime":@(ABS([self.stayTime timeIntervalSinceNow])),
-                                                                 @"hashID":self.hashID ?: @""}];
+    if (!self.memAddress || [self.memAddress length] <= 0) {
+        return;
+    }
+    uintptr_t hex = strtoull(self.memAddress.UTF8String, NULL, 0);
+    id object = (__bridge id)((void*)hex);
+    if ([object conformsToProtocol:@protocol(UREViewControllerDelegate)] && [object respondsToSelector:NSSelectorFromString(@"justLog:")]) {
+        [object performSelector:NSSelectorFromString(@"justLog:") withObject:[NSString stringWithFormat:@"%d", arc4random_uniform(100)]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -64,6 +64,7 @@
 		21B9FA081BF1B52200793652 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		21B9FA161BF301BC00793652 /* URERoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URERoutes.h; sourceTree = "<group>"; };
 		21B9FA171BF301BC00793652 /* URERoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URERoutes.m; sourceTree = "<group>"; };
+		21D651551C0D25820033F4EF /* UREProtocolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UREProtocolHeader.h; sourceTree = "<group>"; };
 		846498A2F3AE0E00F6301886 /* Pods-URLRouteExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLRouteExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-URLRouteExample/Pods-URLRouteExample.release.xcconfig"; sourceTree = "<group>"; };
 		8EDE7AED75DB4A95D6445F35 /* Pods-URLRouteExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLRouteExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-URLRouteExample/Pods-URLRouteExample.debug.xcconfig"; sourceTree = "<group>"; };
 		9E2A6C92C5D829633BBB1999 /* libPods-URLRouteExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-URLRouteExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +133,7 @@
 				21B9F9FF1BF192EF00793652 /* UREFirstViewController.m */,
 				21B9FA011BF192FB00793652 /* URESecondViewController.h */,
 				21B9FA021BF192FB00793652 /* URESecondViewController.m */,
+				21D651551C0D25820033F4EF /* UREProtocolHeader.h */,
 				21B9F9D41BF1910A00793652 /* Main.storyboard */,
 				21B9F9D71BF1910A00793652 /* Assets.xcassets */,
 				21B9F9D91BF1910A00793652 /* LaunchScreen.storyboard */,

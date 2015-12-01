@@ -8,6 +8,12 @@
 
 #import "URESecondViewController.h"
 #import <Masonry.h>
+#import "UREProtocolHeader.h"
+
+@interface URESecondViewController () <UREViewControllerDelegate>
+@property (strong, nonatomic)           NSDate              *currentTime;
+
+@end
 
 @implementation URESecondViewController
 
@@ -22,16 +28,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"timer" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showTimer:)
-                                                 name:@"timer"
-                                               object:nil];
+    _currentTime = [NSDate date];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,23 +41,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Util
-
-- (void)showTimer:(NSNotification*)notification
-{
-    NSString *hashID = notification.userInfo[@"hashID"];
-    if ([hashID isEqualToString:[NSString stringWithFormat:@"%lu", [self hash]]]) {
-        CGFloat stayTime =  [notification.userInfo[@"stayTime"] floatValue];
-        self.descLabel.text = [NSString stringWithFormat:@"%f", stayTime];
-    }
-}
-
 - (void)skipToNextViewController
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *urlString = [NSString stringWithFormat:@"me.luolee.urlrouteexample://self/viewController/4658CF27F926A5EFB3A70E28FCC1906E4D751335?title=Safari&colorType=1&hashID=%lu", [self hash]];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        NSString *memAddr = [self.description componentsSeparatedByString:@": "][1];
+        memAddr = [memAddr componentsSeparatedByString:@">"][0];
+        NSString *urlString = [NSString stringWithFormat:@"me.luolee.urlrouteexample://self/viewController/4658CF27F926A5EFB3A70E28FCC1906E4D751335?title=Safari&colorType=1&memAddress=%@", memAddr];
+        NSURL *url = [NSURL URLWithString:urlString];
+        [[UIApplication sharedApplication] openURL:url];
     });
+}
+
+#pragma mark - Delegate
+
+- (void)justLog:(NSString*)logString
+{
+    NSLog(@"protocol:%@", logString);
+    CGFloat stayTime =  ABS([self.currentTime timeIntervalSinceNow]);
+    self.descLabel.text = [NSString stringWithFormat:@"%f", stayTime];
 }
 
 #pragma mark - UIView

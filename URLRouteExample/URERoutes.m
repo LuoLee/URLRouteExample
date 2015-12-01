@@ -50,9 +50,8 @@
             [strongSelf showViewController:viewController];
         } else if ([hashString isEqualToString:[[NSStringFromClass([UREFirstViewController class]) SHA1] uppercaseString]]) {
             // SHA1:4658CF27F926A5EFB3A70E28FCC1906E4D751335
-            NSString *hashID = link.queryParameters[@"hashID"];
             UREFirstViewController *viewController = [UREFirstViewController new];
-            viewController.hashID = hashID;
+            viewController.memAddress = [NSString stringWithFormat:@"%@", link.queryParameters[@"memAddress"]];
             viewController.title = [NSString stringWithFormat:@"FirstViewController-%@", viewControllerTitle];
             viewController.view.backgroundColor = colorTypes[colorType];
             [strongSelf showViewController:viewController];
